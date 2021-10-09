@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BookDatabase.mdf" />
+    <None Remove="BookDatabase_log.ldf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="BookDatabase.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BookDatabase_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RX0T7Y_HFT_2021221.Models\RX0T7Y_HFT_2021221.Models.csproj" />
+  </ItemGroup>
+
+</Project>
