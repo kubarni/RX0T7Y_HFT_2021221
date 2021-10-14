@@ -22,8 +22,29 @@ namespace RX0T7Y_HFT_2021221.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"");
+                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BookDatabase.mdf;Integrated Security=True");
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder mb)
+        {
+            mb.Entity<Book>(entity =>
+            {
+                entity
+                .HasOne(book => book.Publisher)
+                .WithMany(publisher => publisher.Books)
+                .HasForeignKey(book => book.PublisherId)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            mb.Entity<Author>(entity =>
+            {
+                entity
+                .HasOne(author => author.Publisher)
+                .WithMany(publisher => publisher.Authors)
+                .HasForeignKey(author => author.PublisherId)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
         }
 
     }

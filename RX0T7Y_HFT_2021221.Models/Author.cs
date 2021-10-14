@@ -25,5 +25,8 @@ namespace RX0T7Y_HFT_2021221.Models
 
         [ForeignKey(nameof(Publisher))]
         public int PublisherId { get; set; }
+
+        [NotMapped]
+        public virtual Publisher Publisher { get; set; }
     }
 }

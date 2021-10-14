@@ -25,6 +25,6 @@ namespace RX0T7Y_HFT_2021221.Models
         public int PublisherId { get; set; }
 
         [NotMapped]
-        public virtual Author Author { get; set; }
+        public virtual Publisher Publisher { get; set; }
     }
 }
