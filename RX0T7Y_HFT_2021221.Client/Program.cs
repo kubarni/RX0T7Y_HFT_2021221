@@ -6,7 +6,7 @@ namespace RX0T7Y_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 }
