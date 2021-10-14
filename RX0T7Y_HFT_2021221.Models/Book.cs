@@ -20,6 +20,8 @@ namespace RX0T7Y_HFT_2021221.Models
         [Required]
         public int Price { get; set; }
 
+        [Required]
+        public int Length { get; set; }
 
         [ForeignKey(nameof(Publisher))]
         public int PublisherId { get; set; }
