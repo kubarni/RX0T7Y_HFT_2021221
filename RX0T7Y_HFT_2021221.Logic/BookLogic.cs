@@ -48,6 +48,16 @@ namespace RX0T7Y_HFT_2021221.Logic
             bookRepo.Update(book);
         }
 
-        //Non-CRUD methods soon...
+        //Non-CRUD methods
+
+        public double AVGPrice()
+        {
+            return bookRepo.ReadAll().Average(t => t.Price);
+        }
+
+        public double AVGLength()
+        {
+            return bookRepo.ReadAll().Average(t => t.Length);
+        }
     }
 }
