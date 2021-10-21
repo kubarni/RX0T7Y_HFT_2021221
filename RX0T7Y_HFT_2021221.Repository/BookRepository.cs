@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RX0T7Y_HFT_2021221.Repository
 {
-    class BookRepository : IBookRepository
+    public class BookRepository : IBookRepository
     {
         BookAuthorPublisherDbContext db;
 

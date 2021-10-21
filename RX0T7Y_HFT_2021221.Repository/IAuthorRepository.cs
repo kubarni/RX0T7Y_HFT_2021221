@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace RX0T7Y_HFT_2021221.Repository
 {
-    interface IAuthorRepository
+    public interface IAuthorRepository
     {
         void Create(Author author);
         void Delete(int id);
