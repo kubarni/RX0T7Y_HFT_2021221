@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RX0T7Y_HFT_2021221.Logic
 {
-    public class BookLogic
+    public class BookLogic : IBookLogic
     {
         IBookRepository bookRepo;
 
@@ -21,7 +21,7 @@ namespace RX0T7Y_HFT_2021221.Logic
 
         public void Create(Book book)
         {
-            if(book.Length <= 0)
+            if (book.Length <= 0)
             {
                 throw new ArgumentException("Negative length is not allowed!!");
             }
@@ -46,18 +46,6 @@ namespace RX0T7Y_HFT_2021221.Logic
         public void Update(Book book)
         {
             bookRepo.Update(book);
-        }
-
-        //Non-CRUD methods
-
-        public double AVGPrice()
-        {
-            return bookRepo.ReadAll().Average(t => t.Price);
-        }
-
-        public double AVGLength()
-        {
-            return bookRepo.ReadAll().Average(t => t.Length);
         }
     }
 }

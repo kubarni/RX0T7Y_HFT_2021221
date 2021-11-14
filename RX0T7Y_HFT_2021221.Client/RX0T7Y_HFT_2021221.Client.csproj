@@ -6,7 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RX0T7Y_HFT_2021221.Data\RX0T7Y_HFT_2021221.Data.csproj" />
+    <ProjectReference Include="..\RX0T7Y_HFT_2021221.Logic\RX0T7Y_HFT_2021221.Logic.csproj" />
     <ProjectReference Include="..\RX0T7Y_HFT_2021221.Models\RX0T7Y_HFT_2021221.Models.csproj" />
+    <ProjectReference Include="..\RX0T7Y_HFT_2021221.Repository\RX0T7Y_HFT_2021221.Repository.csproj" />
   </ItemGroup>
 
 </Project>
