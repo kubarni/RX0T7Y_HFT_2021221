@@ -12,13 +12,13 @@ namespace RX0T7Y_HFT_2021221.Client
             BookAuthorPublisherDbContext db = new BookAuthorPublisherDbContext();
 
             IAuthorRepository authorRepo = new AuthorRepository(db);
-            AuthorLogic authorLog = new AuthorLogic(authorRepo);
+            IAuthorLogic authorLog = new AuthorLogic(authorRepo);
 
             IBookRepository bookRepo = new BookRepository(db);
-            BookLogic bookLog = new BookLogic(bookRepo);
+            IBookLogic bookLog = new BookLogic(bookRepo);
 
             IPublisherRepository publisherRepo = new PublisherRepository(db);
-            PublisherLogic publisherLog = new PublisherLogic(publisherRepo);
+            IPublisherLogic publisherLog = new PublisherLogic(publisherRepo);
 
             var q0 = publisherLog.ReadAll();
 

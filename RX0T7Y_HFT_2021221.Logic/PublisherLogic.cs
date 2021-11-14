@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RX0T7Y_HFT_2021221.Logic
 {
-    public class PublisherLogic
+    public class PublisherLogic : IPublisherLogic
     {
         IPublisherRepository publisherRepo;
 
@@ -72,16 +72,16 @@ namespace RX0T7Y_HFT_2021221.Logic
 
         public object MaxLength()
         {
-            var maxL = publisherRepo.ReadAll().SelectMany(t => t.Books).Max(m=>m.Length);
+            var maxL = publisherRepo.ReadAll().SelectMany(t => t.Books).Max(m => m.Length);
 
             var bookName = (from x in publisherRepo.ReadAll().SelectMany(t => t.Books)
-                             where x.Length == maxL
-                             select x.Name).ToArray();
+                            where x.Length == maxL
+                            select x.Name).ToArray();
 
             string finisingName = bookName[0];
 
             object obj = new { finisingName, maxL };
-            
+
             return obj;
         }
 
@@ -90,13 +90,13 @@ namespace RX0T7Y_HFT_2021221.Logic
             var youngestYear = publisherRepo.ReadAll().SelectMany(t => t.Authors).Max(m => m.YearOfBirth);
 
             var Name = (from x in publisherRepo.ReadAll().SelectMany(t => t.Authors)
-                            where x.YearOfBirth == youngestYear
-                            select x.Name).ToArray();
+                        where x.YearOfBirth == youngestYear
+                        select x.Name).ToArray();
 
             string finisingName = Name[0];
 
             object obj = new { finisingName, youngestYear };
-            
+
             return obj;
         }
 
