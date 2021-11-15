@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RX0T7Y_HFT_2021221.Logic
 {
-    public class PublisherLogic : IPublisherLogic
+    public class PublisherLogic
     {
         IPublisherRepository publisherRepo;
 
@@ -49,26 +49,6 @@ namespace RX0T7Y_HFT_2021221.Logic
         }
 
         //non-CRUD methods
-
-        public double AveragePrice()
-        {
-            var q = publisherRepo.ReadAll().SelectMany(p => p.Books).Average(b => b.Price);
-
-            return q;
-        }
-
-        public IEnumerable<object> GroupByPublishers()
-        {
-            var q = from x in publisherRepo.ReadAll().SelectMany(t => t.Books)
-                    group x by x.Publisher.Id into g
-                    select new
-                    {
-                        PublisherId = g.Key,
-                        AvgPrice = g.Average(p => p.Price)
-                    };
-
-            return q;
-        }
 
         public object MaxLength()
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RX0T7Y_HFT_2021221.Logic
 {
-    public class AuthorLogic : IAuthorLogic
+    public class AuthorLogic
     {
         IAuthorRepository authorRepo;
 
@@ -30,7 +30,14 @@ namespace RX0T7Y_HFT_2021221.Logic
 
         public Author Read(int id)
         {
-            return authorRepo.Read(id);
+            if (id >= 0)
+            {
+                return authorRepo.Read(id);
+            }
+            else
+            {
+                throw new ArgumentException("Impossible data");
+            }
         }
 
         public IEnumerable<Author> ReadAll()
@@ -46,6 +53,41 @@ namespace RX0T7Y_HFT_2021221.Logic
         public void Update(Author author)
         {
             authorRepo.Update(author);
+        }
+
+        //--------------------
+
+        public IEnumerable<object> GroupbyPublisher()
+        {
+            var q = from x in authorRepo.ReadAll()
+                    group x by x.Publisher.Name into g
+                    select new
+                    {
+                        Name = g.Key,
+                        Count = g.Count()
+                    };
+            return q;
+        }
+        public IEnumerable<object> GroupbyHeadquarters()
+        {
+            var q = from x in authorRepo.ReadAll()
+                    group x by x.Publisher.Headquarters into g
+                    select new
+                    {
+                        Name = g.Key,
+                        Count = g.Count()
+                    };
+            return q;
+        }
+
+
+
+        public double AVGPrice()
+        {
+            var q = Math.Round(authorRepo.ReadAll()
+                .SelectMany(t => t.Publisher.Books).Average(a => a.Price),0);
+
+            return q;
         }
     }
 }

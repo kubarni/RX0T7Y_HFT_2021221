@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RX0T7Y_HFT_2021221.Logic
 {
-    public class BookLogic : IBookLogic
+    public class BookLogic
     {
         IBookRepository bookRepo;
 
@@ -30,7 +30,14 @@ namespace RX0T7Y_HFT_2021221.Logic
 
         public Book Read(int id)
         {
-            return bookRepo.Read(id);
+            if (id >=0 )
+            {
+                return bookRepo.Read(id);
+            }
+            else
+            {
+                throw new ArgumentException("Impossible data");
+            }
         }
 
         public IEnumerable<Book> ReadAll()
@@ -47,5 +54,42 @@ namespace RX0T7Y_HFT_2021221.Logic
         {
             bookRepo.Update(book);
         }
+
+        //-----------
+
+        public double AvgIncome()
+        {
+            var q = bookRepo.ReadAll().Average(t => t.Publisher.Income);
+
+            return q;
+        }
+
+        public IEnumerable<object> GroupByPublishers()
+        {
+            var q = from x in bookRepo.ReadAll()
+                    group x by x.Publisher.Name into g
+                    select new
+                    {
+                        Name = g.Key,
+                        AvgPrice = g.Average(k => k.Price)
+                    };
+
+            return q;
+        }
+
+        public IEnumerable<object> GroupByAVGLength()
+        {
+            var q = from x in bookRepo.ReadAll()
+                    group x by x.Publisher.Id into g
+                    select new
+                    {
+                        PublisherId = g.Key,
+                        AvgPrice = g.Average(k => k.Length)
+                    };
+
+            return q;
+        }
+
+
     }
 }

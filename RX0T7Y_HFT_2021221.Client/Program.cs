@@ -12,25 +12,33 @@ namespace RX0T7Y_HFT_2021221.Client
             BookAuthorPublisherDbContext db = new BookAuthorPublisherDbContext();
 
             IAuthorRepository authorRepo = new AuthorRepository(db);
-            IAuthorLogic authorLog = new AuthorLogic(authorRepo);
+            AuthorLogic authorLog = new AuthorLogic(authorRepo);
 
             IBookRepository bookRepo = new BookRepository(db);
-            IBookLogic bookLog = new BookLogic(bookRepo);
+            BookLogic bookLog = new BookLogic(bookRepo);
 
             IPublisherRepository publisherRepo = new PublisherRepository(db);
-            IPublisherLogic publisherLog = new PublisherLogic(publisherRepo);
+            PublisherLogic publisherLog = new PublisherLogic(publisherRepo);
 
             var q0 = publisherLog.ReadAll();
 
-            var q1 = publisherLog.GroupByPublishers();
-
-            var q2 = publisherLog.AveragePrice();
+            var q1 = authorLog.AVGPrice();
 
             var q3 = publisherLog.MaxLength();
 
             var q4 = publisherLog.TheYoungestAuthor();
 
             var q5 = publisherLog.PublishersBookCount();
+
+            var v1 = bookLog.AvgIncome();
+
+            var v2 = bookLog.GroupByPublishers();
+
+            var v3 = authorLog.GroupbyPublisher();
+
+            var v4 = bookLog.GroupByAVGLength();
+
+            var v5 = authorLog.GroupbyHeadquarters();
 
             ;
         }
