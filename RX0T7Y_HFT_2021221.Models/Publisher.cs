@@ -34,5 +34,6 @@ namespace RX0T7Y_HFT_2021221.Models
             Authors = new HashSet<Author>();
             Books = new HashSet<Book>();
         }
+
     }
 }

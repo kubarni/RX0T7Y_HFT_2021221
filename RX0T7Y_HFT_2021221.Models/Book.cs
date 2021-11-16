@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RX0T7Y_HFT_2021221.Models
@@ -27,6 +28,8 @@ namespace RX0T7Y_HFT_2021221.Models
         public int PublisherId { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual Publisher Publisher { get; set; }
+
     }
 }
