@@ -16,15 +16,8 @@ namespace RX0T7Y_HFT_2021221.Test
         AuthorLogic authorLog;
         BookLogic bookLog;
 
-
         public MockTest()
         {
-            /*Publisher fakePublisher = new Publisher()
-            {
-                Name = "Librikiadó",
-                Headquarters = "Budapest",
-                Income = 41000000
-            };*/
 
             var publishers = new List<Publisher>()
             {
