@@ -92,9 +92,5 @@ namespace CarDB.Client
 
             response.EnsureSuccessStatusCode();
         }
-
-
-        //most ide írok
-
     }
 }
