@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RX0T7Y_HFT_2021221.Logic
 {
-    public class AuthorLogic
+    public class AuthorLogic : IAuthorLogic
     {
         IAuthorRepository authorRepo;
 
@@ -18,6 +18,7 @@ namespace RX0T7Y_HFT_2021221.Logic
         }
 
         //CRUD methods
+
 
         public void Create(Author author)
         {
@@ -85,7 +86,7 @@ namespace RX0T7Y_HFT_2021221.Logic
         public double AVGPrice()
         {
             var q = Math.Round(authorRepo.ReadAll()
-                .SelectMany(t => t.Publisher.Books).Average(a => a.Price),0);
+                .SelectMany(t => t.Publisher.Books).Average(a => a.Price), 0);
 
             return q;
         }

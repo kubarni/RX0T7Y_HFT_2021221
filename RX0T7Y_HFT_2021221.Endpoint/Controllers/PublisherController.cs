@@ -49,6 +49,5 @@ namespace RX0T7Y_HFT_2021221.Endpoint.Controllers
         {
             pl.Delete(id);
         }
-
     }
 }

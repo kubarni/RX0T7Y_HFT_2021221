@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RX0T7Y_HFT_2021221.Logic
 {
-    public class PublisherLogic
+    public class PublisherLogic : IPublisherLogic
     {
         IPublisherRepository publisherRepo;
 

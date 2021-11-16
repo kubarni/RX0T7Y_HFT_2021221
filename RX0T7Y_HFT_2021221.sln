@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{721AF3
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RX0T7Y_HFT_2021221.Endpoint", "RX0T7Y_HFT_2021221.Endpoint\RX0T7Y_HFT_2021221.Endpoint.csproj", "{D6ED07A5-55CA-4234-BF8A-9B8445F8298C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{8B53C239-C101-44E6-9DFF-C11C3EC45C33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B53C239-C101-44E6-9DFF-C11C3EC45C33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B53C239-C101-44E6-9DFF-C11C3EC45C33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6ED07A5-55CA-4234-BF8A-9B8445F8298C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6ED07A5-55CA-4234-BF8A-9B8445F8298C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6ED07A5-55CA-4234-BF8A-9B8445F8298C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6ED07A5-55CA-4234-BF8A-9B8445F8298C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{30191B49-D9AD-47F8-981C-A510F4C5A863} = {3B7A316F-0A25-440A-839D-4D1936BB04E8}
 		{80EFDADD-93F7-4DC9-BAA8-0DE1DD38E77E} = {3B7A316F-0A25-440A-839D-4D1936BB04E8}
 		{8B53C239-C101-44E6-9DFF-C11C3EC45C33} = {3B7A316F-0A25-440A-839D-4D1936BB04E8}
+		{D6ED07A5-55CA-4234-BF8A-9B8445F8298C} = {3B7A316F-0A25-440A-839D-4D1936BB04E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AF135E00-4241-46EC-997A-9E6D42CFBD30}

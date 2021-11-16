@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RX0T7Y_HFT_2021221.Logic
 {
-    public class BookLogic
+    public class BookLogic : IBookLogic
     {
         IBookRepository bookRepo;
 
@@ -30,7 +30,7 @@ namespace RX0T7Y_HFT_2021221.Logic
 
         public Book Read(int id)
         {
-            if (id >=0 )
+            if (id >= 0)
             {
                 return bookRepo.Read(id);
             }
@@ -56,6 +56,7 @@ namespace RX0T7Y_HFT_2021221.Logic
         }
 
         //-----------------
+
 
         public double AvgIncome()
         {
@@ -89,7 +90,5 @@ namespace RX0T7Y_HFT_2021221.Logic
 
             return q;
         }
-
-
     }
 }
