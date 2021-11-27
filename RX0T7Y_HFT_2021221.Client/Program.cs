@@ -29,29 +29,28 @@ namespace RX0T7Y_HFT_2021221.Client
 
         static public void Menu(RestService rest)
         {
-            int input1 = -1;
-            int input2 = -1;
+            bool end = false;
 
-            while (input1 != 0 || input2 != 0)
+            while (end == false)
             {
-                Console.WriteLine("*********Menu*********");
+                Console.WriteLine("*********MENU*********");
                 Console.WriteLine("(1) option - CRUDS");
                 Console.WriteLine("(2) option - NON-CRUDS");
                 Console.WriteLine("(0) option - QUIT ");
                 Console.WriteLine("**********************");
 
-                input1 = int.Parse(Console.ReadLine());
-
+                int input1 = int.Parse(Console.ReadLine());
+                
                 Console.Clear();
-
-                Console.WriteLine("*********Menu*********");
+                
+                Console.WriteLine("*********MENU*********");
                 Console.WriteLine("(1) option - BOOK");
                 Console.WriteLine("(2) option - AUTHOR");
                 Console.WriteLine("(3) option - PUBLISHER");
                 Console.WriteLine("(0) option - QUIT ");
                 Console.WriteLine("**********************");
 
-                input2 = int.Parse(Console.ReadLine());
+                int input2 = int.Parse(Console.ReadLine());
 
                 Console.Clear();
 
@@ -291,6 +290,7 @@ namespace RX0T7Y_HFT_2021221.Client
                                 foreach (var item in bs)
                                 {
                                     Console.WriteLine(item.Name + "\n" + item.Headquarters + "\n" + item.Income);
+                                    Console.WriteLine();
                                 }
 
                                 Console.WriteLine("Push enter to continue");
@@ -325,7 +325,6 @@ namespace RX0T7Y_HFT_2021221.Client
                     else
                     {
                         Console.WriteLine("INCORRECT INPUT");
-                        Menu(rest);
                     }
                 }
                 else if (input1 == 2)
@@ -333,35 +332,137 @@ namespace RX0T7Y_HFT_2021221.Client
                     Console.WriteLine("******NON-CRUDS******");
                     if (input2 == 1)
                     {
-                        Console.WriteLine("*****BOOKS*****");
+                        Console.WriteLine("********BOOKS********");
 
-                        string para = Console.ReadLine();
-                        var method = rest.Get<Book>(para);
+                        Console.WriteLine("*********METHODS*********");
+                        Console.WriteLine("(1) option - AvgPrice");
+                        Console.WriteLine("(2) option - GroupByAvgLength");
+                        Console.WriteLine("(3) option - GroupByPublishers");
+                        Console.WriteLine("**********************");
+
+                        int input3 = int.Parse(Console.ReadLine());
+                        Console.Clear();
+
+                        switch (input3)
+                        {
+                            case 1:
+
+                                var q1 = rest.GetSingle<double>("stat/AVGPrice");
+                                Console.WriteLine(q1);
+
+                                break;
+                            case 2:
+
+                                var q2 = rest.GetSingle<IEnumerable<object>>("stat/GroupByAVGLength");
+                                foreach (var item in q2)
+                                {
+                                    Console.WriteLine(item);
+                                }
+
+                                break;
+                            case 3:
+
+                                var q3 = rest.GetSingle<IEnumerable<object>>("stat/GroupByPublishers");
+                                foreach (var item in q3)
+                                {
+                                    Console.WriteLine(item);
+                                }
+
+                                break;
+                        }
                     }
                     else if (input2 == 2)
                     {
                         Console.WriteLine("*****AUTHORS*****");
 
-                        string para = Console.ReadLine();
-                        var method = rest.Get<Book>(para);
+                        Console.WriteLine("*********METHODS*********");
+                        Console.WriteLine("(1) option - GroupbyPublisher");
+                        Console.WriteLine("(2) option - GroupbyHeadquarters");
+                        Console.WriteLine("(3) option - AuthAVGPrice");
+                        Console.WriteLine("**********************");
+
+                        int input3 = int.Parse(Console.ReadLine());
+                        Console.Clear();
+
+                        switch (input3)
+                        {
+                            case 1:
+
+                                var q1 = rest.GetSingle<IEnumerable<object>>("stat/GroupbyPublisher");
+                                foreach (var item in q1)
+                                {
+                                    Console.WriteLine(item);
+                                }
+
+                                break;
+                            case 2:
+
+                                var q2 = rest.GetSingle<IEnumerable<object>>("stat/GroupbyHeadquarters");
+                                foreach (var item in q2)
+                                {
+                                    Console.WriteLine(item);
+                                }
+
+                                break;
+                            case 3:
+
+                                var q3 = rest.GetSingle<double>("stat/AVGPrice");
+                                Console.WriteLine(q3);
+
+                                break;
+                        }
                     }
                     else if (input2 == 3)
                     {
                         Console.WriteLine("*****PUBLISHERS*****");
 
-                        string para = Console.ReadLine();
-                        var method = rest.Get<Book>(para);
+                        Console.WriteLine("*********METHODS*********");
+                        Console.WriteLine("(1) option - MaxLength");
+                        Console.WriteLine("(2) option - TheYoungestAuthor");
+                        Console.WriteLine("(3) option - PublishersBookCount");
+                        Console.WriteLine("**********************");
+
+                        int input3 = int.Parse(Console.ReadLine());
+                        Console.Clear();
+
+                        switch (input3)
+                        {
+                            case 1:
+
+                                var q1 = rest.GetSingle<object>("stat/MaxLength");
+                                Console.WriteLine(q1);
+
+                                break;
+                            case 2:
+
+                                var q2 = rest.GetSingle<object>("stat/TheYoungestAuthor");
+                                Console.WriteLine(q2);
+
+                                break;
+                            case 3:
+
+                                var q3 = rest.GetSingle<IEnumerable<object>>("/stat/PublishersBookCount");
+                                foreach (var item in q3)
+                                {
+                                    Console.WriteLine(item);
+                                }
+
+                                break;
+                        }
                     }
                     else
                     {
                         Console.WriteLine("INCORRECT INPUT");
-                        Menu(rest);
                     }
+                }
+                else if (input1 == 0 && input2 == 0)
+                {
+                    end = true;
+                    Console.WriteLine("QUIT CONFIRMED");
                 }
                 else
                 {
                     Console.WriteLine("INCORRECT INPUT");
-                    Menu(rest);
                 }
             }
             
