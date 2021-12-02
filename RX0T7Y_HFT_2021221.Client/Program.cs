@@ -9,7 +9,7 @@ namespace RX0T7Y_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-            System.Threading.Thread.Sleep(10000);
+            System.Threading.Thread.Sleep(15000);
             RestService rest = new RestService("http://localhost:31278");
 
             var publishers = rest.Get<Publisher>("publisher");
@@ -123,6 +123,11 @@ namespace RX0T7Y_HFT_2021221.Client
                             case "4":
                                 var newBook = new Book();
 
+                                Console.WriteLine("Id:");
+                                id = int.Parse(Console.ReadLine());
+                                newBook.Id = id;
+
+                                Console.WriteLine("Name:");
                                 name = Console.ReadLine();
                                 newBook.Name = name;
 
@@ -142,6 +147,7 @@ namespace RX0T7Y_HFT_2021221.Client
                                 
                                 break;
                             case "5":
+                                Console.WriteLine("Id:");
                                 id = int.Parse(Console.ReadLine());
 
                                 rest.Delete(id, "book");
@@ -188,7 +194,7 @@ namespace RX0T7Y_HFT_2021221.Client
                                 break;
                             case "2":
 
-                                int id = int.Parse(Console.ReadLine());
+                                int id  = int.Parse(Console.ReadLine());
                                 var a = rest.Get<Author>(id, "author");
 
                                 Console.WriteLine(a.Name + "\n" + a.YearOfBirth + "\n" + a.PlaceOfBirth);
@@ -214,6 +220,10 @@ namespace RX0T7Y_HFT_2021221.Client
                             case "4":
                                 var newAuthor = new Author();
 
+                                Console.WriteLine("Id:");
+                                id = int.Parse(Console.ReadLine());
+                                newAuthor.Id = id;
+
                                 Console.WriteLine("Name:");
                                 name = Console.ReadLine();
                                 newAuthor.Name = name;
@@ -234,9 +244,11 @@ namespace RX0T7Y_HFT_2021221.Client
                                 
                                 break;
                             case "5":
+                                Console.WriteLine("Id:");
+
                                 id = int.Parse(Console.ReadLine());
 
-                                rest.Delete(id, "book");
+                                rest.Delete(id, "author");
                                 break;
                         }
                     }
@@ -276,8 +288,10 @@ namespace RX0T7Y_HFT_2021221.Client
                                 break;
                             case "2":
 
-                                int id = int.Parse(Console.ReadLine());
+                                int id  = int.Parse(Console.ReadLine());
                                 var p = rest.Get<Publisher>(id, "publisher");
+
+                                Console.WriteLine(p.Name + "\n" + p.Income+ "\n" + p.Headquarters);
 
                                 Console.WriteLine("Push enter to continue");
                                 Console.ReadKey();
@@ -300,6 +314,10 @@ namespace RX0T7Y_HFT_2021221.Client
                             case "4":
                                 var newPublisher = new Publisher();
 
+                                Console.WriteLine("Id:");
+                                id = int.Parse(Console.ReadLine());
+                                newPublisher.Id = id;
+
                                 Console.WriteLine("Name:");
                                 name = Console.ReadLine();
                                 newPublisher.Name = name;
@@ -316,6 +334,8 @@ namespace RX0T7Y_HFT_2021221.Client
 
                                 break;
                             case "5":
+
+                                Console.WriteLine("Id:");
                                 id = int.Parse(Console.ReadLine());
 
                                 rest.Delete(id, "publisher");
