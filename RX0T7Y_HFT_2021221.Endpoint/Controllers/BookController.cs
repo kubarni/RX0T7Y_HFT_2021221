@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using RX0T7Y_HFT_2021221.Endpoint.Services;
 using RX0T7Y_HFT_2021221.Logic;
 using RX0T7Y_HFT_2021221.Models;
 using System;
@@ -14,10 +16,12 @@ namespace RX0T7Y_HFT_2021221.Endpoint.Controllers
     {
 
         IBookLogic bl;
+        IHubContext<SignalRHub> hub;
 
-        public BookController(IBookLogic bl)
+        public BookController(IBookLogic bl, IHubContext<SignalRHub> hub)
         {
             this.bl = bl;
+            this.hub = hub;
         }
 
         [HttpGet]
@@ -36,18 +40,23 @@ namespace RX0T7Y_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Book value)
         {
             bl.Create(value);
+            this.hub.Clients.All.SendAsync("BookCreated", value);
         }
 
         [HttpPut]
         public void Put([FromBody] Book value)
         {
             bl.Update(value);
+            this.hub.Clients.All.SendAsync("BookUpdated", value);
+
         }
 
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var bookToDelete = this.bl.Read(id);
             bl.Delete(id);
+            this.hub.Clients.All.SendAsync("BookDeleted", bookToDelete);
         }
     }
 }
