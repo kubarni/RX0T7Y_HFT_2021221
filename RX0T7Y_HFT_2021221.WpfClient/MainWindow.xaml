@@ -1,0 +1,45 @@
+﻿<Window x:Class="RX0T7Y_HFT_2021221.WpfClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RX0T7Y_HFT_2021221.WpfClient"
+        mc:Ignorable="d"
+        Title="Book Editor" Height="505" Width="962">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Books}" Grid.Column="0" SelectedItem="{Binding SelectedBook}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1">
+            <Label Content="Name" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedBook.Name}" Padding="10" Margin="10"/>
+            <Label Content="Price" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedBook.Price}" Padding="10" Margin="10"/>
+            <Label Content="Length" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedBook.Length}" Padding="10" Margin="10"/>
+            <Label Content="Publisher ID" Padding="10" Margin="10" Background="LightBlue"/>
+            <TextBox Text="{Binding SelectedBook.PublisherId}" Padding="10" Margin="10"/>
+
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Button Content="Create Book" Command="{Binding CreateBookCommand}" Padding="10" Margin="10"/>
+            <Button Content="Update Book" Command="{Binding UpdateBookCommand}" Padding="10" Margin="10"/>
+            <Button Content="Delete Book" Command="{Binding DeleteBookCommand}" Padding="10" Margin="10,10,10,176"/>
+            <Button Content="Author Editor" Command="{Binding AuthorEditorCommand}" Padding="10" Margin="10" Background="LightGreen"/>
+            <Button Content="Publisher Editor" Command="{Binding PublisherEditorCommand}" Padding="10" Margin="10" Background="LightSalmon"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
