@@ -49,6 +49,12 @@ namespace RX0T7Y_HFT_2021221.Endpoint
 
             app.UseRouting();
 
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowCredentials()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:39629"));
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
