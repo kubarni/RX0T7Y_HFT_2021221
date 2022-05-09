@@ -1,5 +1,5 @@
 ﻿*{
-    font-size: 1.05em;
+    font-size: 1.02em;
 }
 h1{
     font-size: 2em;
@@ -21,18 +21,38 @@ th,td{
 th{
     background-color: lightblue;
 }
+
+
 #formdiv{
     display: flex;
     flex-direction:column;
     margin-bottom: 20px;
 }
+#updateformdiv {
+    display: none;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+
 table button{
     padding: 2px;
 }
+
+
 #formdiv label, button, input{
     margin: 10px;
     padding: 7px;
 }
+#updateformdiv label, button, input {
+    margin: 10px;
+    padding: 7px;
+}
+
+
 #formdiv label{
+    font-weight: bolder;
+}
+#updateformdiv label {
     font-weight: bolder;
 }
